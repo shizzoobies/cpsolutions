@@ -35,6 +35,48 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // --- Contact Modal ---
+  var contactModal = document.getElementById('contactModal');
+  var contactModalClose = document.getElementById('contactModalClose');
+  var modalContactForm = document.getElementById('modalContactForm');
+  var modalContactSuccess = document.getElementById('modalContactSuccess');
+
+  if (contactModal) {
+    // Open modal on any [data-open-contact] click
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest('[data-open-contact]');
+      if (!trigger) return;
+      e.preventDefault();
+      contactModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Close
+    contactModalClose.addEventListener('click', function () {
+      contactModal.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+
+    contactModal.addEventListener('click', function (e) {
+      if (e.target === contactModal) {
+        contactModal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && contactModal.classList.contains('open')) {
+        contactModal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Submit via Web3Forms
+    if (modalContactForm && modalContactSuccess) {
+      submitWeb3Form(modalContactForm, modalContactSuccess);
+    }
+  }
+
   // --- Services showcase ---
   var svcData = [
     { title: 'PC & Laptop Repair', desc: 'Complete hardware and software repair for desktops and laptops. Screen replacements, motherboard repair, component upgrades, and more. All major brands and models serviced.' },

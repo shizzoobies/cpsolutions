@@ -24,7 +24,7 @@
         <li><a href="services.html">Services</a></li>
         <li><a href="pricing.html">Pricing</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li class="nav-cta"><a href="booking.html" class="btn btn-primary active">Book Now</a></li>
+        <li class="nav-cta"><a href="#" data-open-contact class="btn btn-primary active">Book Now</a></li>
       </ul>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -181,7 +181,7 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="booking.html">Book Online</a></li>
+            <li><a href="#" data-open-contact>Book Online</a></li>
           </ul>
         </div>
         <div>
@@ -213,6 +213,60 @@
       </div>
     </div>
   </footer>
+
+  <!-- Contact Modal -->
+  <div class="contact-modal" id="contactModal">
+    <div class="contact-modal-inner">
+      <div class="contact-modal-header">
+        <h3>Book a Repair</h3>
+        <button class="contact-modal-close" id="contactModalClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="contact-modal-body">
+        <form id="modalContactForm">
+          <input type="hidden" name="access_key" value="" class="web3forms-key">
+          <input type="hidden" name="subject" value="Repair Request from Computer Solutions Website">
+          <input type="hidden" name="from_name" value="Computer Solutions Website">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="mcName">Name *</label>
+              <input type="text" id="mcName" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="mcPhone">Phone *</label>
+              <input type="tel" id="mcPhone" name="phone" required placeholder="(352) 000-0000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mcEmail">Email *</label>
+            <input type="email" id="mcEmail" name="email" required placeholder="you@email.com">
+          </div>
+          <div class="form-group">
+            <label for="mcService">Service Needed</label>
+            <select id="mcService" name="service">
+              <option value="">Select a service...</option>
+              <option value="PC/Laptop Repair">PC / Laptop Repair</option>
+              <option value="TV Repair">TV Repair</option>
+              <option value="Virus Removal">Virus &amp; Malware Removal</option>
+              <option value="Data Recovery">Data Recovery</option>
+              <option value="Computer Purchase">Buy a Computer</option>
+              <option value="Business IT">Business IT Support</option>
+              <option value="Other">Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mcMessage">Describe the issue</label>
+            <textarea id="mcMessage" name="message" placeholder="What's going on with your device?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-accent btn-lg" style="width:100%;">Send Request</button>
+        </form>
+        <div class="form-success-inline" id="modalContactSuccess">
+          <div class="success-icon">&#10003;</div>
+          <h4>Request Sent!</h4>
+          <p>We'll get back to you shortly. Or call us now at <a href="tel:3524786519" style="color:var(--accent);font-weight:600;">(352) 478-6519</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
