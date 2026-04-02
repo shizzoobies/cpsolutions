@@ -6,7 +6,7 @@
   <meta name="description" content="Computer Solutions - Professional computer repair, IT support, and technology services. Fast, reliable, and affordable.">
   <title>Computer Solutions | Professional Computer Repair & IT Services</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -15,8 +15,7 @@
   <header class="header" id="header">
     <nav class="nav container">
       <a href="index.html" class="logo">
-        <div class="logo-icon"><img src="images/CS Logo.jpeg" alt="Computer Solutions Logo"></div>
-        Computer <span>Solutions</span>
+        <img src="images/CS Logo.jpeg" alt="Computer Solutions" class="nav-logo">
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" class="active">Home</a></li>
@@ -37,13 +36,16 @@
 
   <!-- Hero Section -->
   <section class="hero">
+    <div class="hero-bg">
+      <img src="images/hero-workbench.jpg" alt="Computer Solutions repair workshop">
+    </div>
     <div class="container">
       <div class="hero-content">
         <div class="hero-text">
           <h1>Expert Computer & <span>TV Repair</span> in Keystone Heights</h1>
           <p>Your complete source for PC, laptop, and LED/LCD/DLP television repair. We also sell new and refurbished computers. Reliable service with a personal touch.</p>
           <div class="hero-buttons">
-            <a href="booking.html" class="btn btn-primary btn-lg">Book a Repair</a>
+            <a href="booking.html" class="btn btn-accent btn-lg">Book a Repair</a>
             <a href="services.html" class="btn btn-outline btn-lg">Our Services</a>
           </div>
           <div class="hero-stats">
@@ -61,11 +63,6 @@
             </div>
           </div>
         </div>
-        <div class="hero-visual">
-          <div class="hero-graphic">
-            <img src="images/hero-workbench.jpg" alt="Professional computer repair workbench at Computer Solutions">
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -73,7 +70,8 @@
   <!-- Services Overview -->
   <section class="section">
     <div class="container">
-      <div class="section-header fade-in">
+      <div class="section-header centered fade-in">
+        <span class="section-label">What We Do</span>
         <h2>Our Services</h2>
         <p>Comprehensive technology solutions tailored to your needs</p>
       </div>
@@ -113,11 +111,12 @@
   </section>
 
   <!-- Why Choose Us -->
-  <section class="section section-gray">
+  <section class="section why-section">
     <div class="container">
-      <div class="section-header fade-in">
-        <h2>Why Choose Computer Solutions?</h2>
-        <p>We stand behind our work with quality, speed, and honest pricing</p>
+      <div class="section-header centered fade-in">
+        <span class="section-label" style="background: rgba(74, 144, 217, 0.15); color: var(--accent-light);">Why Us</span>
+        <h2 style="color: var(--white);">Why Choose Computer Solutions?</h2>
+        <p style="color: var(--gray-400);">We stand behind our work with quality, speed, and honest pricing</p>
       </div>
       <div class="why-grid">
         <div class="why-card fade-in">
@@ -155,7 +154,8 @@
   <!-- How It Works -->
   <section class="section">
     <div class="container">
-      <div class="section-header fade-in">
+      <div class="section-header centered fade-in">
+        <span class="section-label">Simple Process</span>
         <h2>How It Works</h2>
         <p>Getting your device fixed is simple</p>
       </div>
@@ -187,7 +187,8 @@
   <!-- Testimonials Preview -->
   <section class="section section-gray">
     <div class="container">
-      <div class="section-header fade-in">
+      <div class="section-header centered fade-in">
+        <span class="section-label">Testimonials</span>
         <h2>What Our Customers Say</h2>
         <p>Trusted by thousands of satisfied customers</p>
       </div>
@@ -237,19 +238,20 @@
     <div class="container">
       <h2>Ready to Get Your Device Fixed?</h2>
       <p>Book an appointment today and get a free diagnostic. Most repairs completed same day.</p>
-      <a href="booking.html" class="btn btn-white btn-lg">Book an Appointment</a>
-      <a href="contact.html" class="btn btn-outline btn-lg">Contact Us</a>
+      <div class="cta-buttons">
+        <a href="booking.html" class="btn btn-white btn-lg">Book an Appointment</a>
+        <a href="contact.html" class="btn btn-outline btn-lg">Contact Us</a>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
+    <div class="footer-inner container">
       <div class="footer-grid">
         <div class="footer-about">
           <a href="index.html" class="logo">
-            <div class="logo-icon"><img src="images/CS Logo.jpeg" alt="Computer Solutions Logo"></div>
-            Computer <span>Solutions</span>
+            <img src="images/CS Logo.jpeg" alt="Computer Solutions" class="footer-logo">
           </a>
           <p>Your source for computer sales, service, and repair in Keystone Heights, FL. Serving the community with reliable, affordable technology solutions since 2011.</p>
         </div>
