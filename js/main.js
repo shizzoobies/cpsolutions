@@ -156,6 +156,72 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // --- Web3Forms submission helper ---
+  function submitWeb3Form(form, successEl) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var valid = true;
+      form.querySelectorAll('[required]').forEach(function (field) {
+        if (!field.value.trim()) {
+          field.style.borderColor = '#ef4444';
+          valid = false;
+        } else {
+          field.style.borderColor = '';
+        }
+      });
+      if (!valid) return;
+
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      var formData = new FormData(form);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.success) {
+          form.style.display = 'none';
+          successEl.classList.add('show');
+        } else {
+          throw new Error(data.message || 'Submission failed');
+        }
+      })
+      .catch(function (err) {
+        console.warn('Web3Forms error:', err.message);
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        // Show fallback
+        alert('Message could not be sent. Please call us at (352) 478-6519 or email chaiyz@att.net');
+      });
+    });
+  }
+
+  // --- Home Contact Form (Web3Forms) ---
+  var homeContactForm = document.getElementById('homeContactForm');
+  var homeContactSuccess = document.getElementById('homeContactSuccess');
+  if (homeContactForm && homeContactSuccess) {
+    submitWeb3Form(homeContactForm, homeContactSuccess);
+  }
+
+  // --- Home Callback Form (Web3Forms) ---
+  var homeCallbackForm = document.getElementById('homeCallbackForm');
+  var homeCallbackSuccess = document.getElementById('homeCallbackSuccess');
+  if (homeCallbackForm && homeCallbackSuccess) {
+    // Set min date to today
+    var cbDateInput = document.getElementById('cbDate');
+    if (cbDateInput) {
+      var todayStr = new Date().toISOString().split('T')[0];
+      cbDateInput.setAttribute('min', todayStr);
+    }
+    submitWeb3Form(homeCallbackForm, homeCallbackSuccess);
+  }
+
   // --- Smooth scroll for anchor links ---
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
