@@ -110,47 +110,15 @@ function createReviewCard(review) {
     '</div>';
 }
 
-// --- Carousel ---
-var autoScrollInterval = null;
-
+// --- Carousel (CSS marquee, seamless loop) ---
 function initCarousel(reviews) {
   var track = document.getElementById('reviewsTrack');
   if (!track) return;
 
-  track.innerHTML = reviews.map(createReviewCard).join('');
-
-  // Auto scroll
-  function autoScroll() {
-    var card = track.querySelector('.review-card');
-    if (!card) return;
-    var cardWidth = card.offsetWidth + 20; // gap
-    var maxScroll = track.scrollWidth - track.clientWidth;
-
-    if (track.scrollLeft >= maxScroll - 10) {
-      track.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      track.scrollBy({ left: cardWidth, behavior: 'smooth' });
-    }
-  }
-
-  autoScrollInterval = setInterval(autoScroll, 4000);
-
-  track.addEventListener('mouseenter', function () {
-    clearInterval(autoScrollInterval);
-  });
-
-  track.addEventListener('mouseleave', function () {
-    autoScrollInterval = setInterval(autoScroll, 4000);
-  });
-
-  // Touch pause
-  track.addEventListener('touchstart', function () {
-    clearInterval(autoScrollInterval);
-  }, { passive: true });
-
-  track.addEventListener('touchend', function () {
-    autoScrollInterval = setInterval(autoScroll, 4000);
-  }, { passive: true });
+  // Render cards twice for seamless loop
+  var cardsHTML = reviews.map(createReviewCard).join('');
+  track.innerHTML = cardsHTML + cardsHTML;
+  track.classList.add('marquee');
 }
 
 // --- Modal ---
