@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Computer Solutions - Professional computer repair, IT support, and technology services. Fast, reliable, and affordable.">
-  <title>Computer Solutions | Professional Computer Repair & IT Services</title>
+  <meta name="description" content="Computer Solutions - Professional computer repair, IT support, and technology services in Keystone Heights, FL.">
+  <title>Computer Solutions | Computer Repair & IT Services | Keystone Heights FL</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
@@ -12,7 +12,6 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header class="header" id="header">
     <nav class="nav container">
       <a href="index.html" class="logo">
@@ -27,20 +26,18 @@
         <li class="nav-cta"><a href="booking.html" class="btn btn-primary">Book Now</a></li>
       </ul>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero hero-split">
     <div class="container">
       <div class="hero-split-grid">
         <div class="hero-text">
           <h1>Expert Computer & <span>TV Repair</span> in Keystone Heights</h1>
-          <p>Your complete source for PC, laptop, and LED/LCD/DLP television repair. We also sell new and refurbished computers. Reliable service with a personal touch.</p>
+          <p>Your complete source for PC, laptop, and LED/LCD/DLP television repair. New and refurbished computers for sale. Reliable service with a personal touch.</p>
           <div class="hero-buttons">
             <a href="booking.html" class="btn btn-accent btn-lg">Book a Repair</a>
             <a href="services.html" class="btn btn-outline btn-lg">Our Services</a>
@@ -67,14 +64,10 @@
     </div>
   </section>
 
-  <!-- Services Overview -->
-  <section class="section" id="servicesSection">
+  <!-- Services -->
+  <section class="hp-services" id="servicesSection">
     <div class="container">
-      <div class="section-header centered fade-in">
-        <span class="section-label">What We Do</span>
-        <h2>Our Services</h2>
-        <p>Click a service to learn more</p>
-      </div>
+      <h2 class="hp-heading fade-in">What We Do</h2>
       <div class="svc-showcase fade-in">
         <div class="svc-icons-row" id="svcIcons">
           <button class="svc-icon-btn active" data-index="0" aria-label="PC & Laptop Repair">
@@ -102,99 +95,61 @@
             <span>Business IT</span>
           </button>
         </div>
-        <div class="svc-detail" id="svcDetail">
-          <div class="svc-detail-inner" id="svcDetailInner">
-            <!-- Filled by JS -->
-          </div>
-        </div>
+        <div class="svc-detail-text" id="svcDetailInner"></div>
       </div>
-      <div class="text-center" style="margin-top: 2rem;">
-        <a href="services.html" class="btn btn-primary btn-lg">View All Services</a>
-      </div>
+      <a href="services.html" class="hp-link fade-in">View all services &rarr;</a>
     </div>
   </section>
 
-  <!-- Why Choose Us -->
-  <section class="section why-section">
+  <!-- Why Us — inline, no boxes -->
+  <section class="hp-why">
     <div class="container">
-      <div class="section-header centered fade-in">
-        <span class="section-label" style="background: rgba(74, 144, 217, 0.15); color: var(--accent-light);">Why Us</span>
-        <h2 style="color: var(--white);">Why Choose Computer Solutions?</h2>
-        <p style="color: var(--gray-400);">We stand behind our work with quality, speed, and honest pricing</p>
-      </div>
-      <div class="why-row fade-in">
-        <div class="why-item">
+      <div class="hp-why-row fade-in">
+        <div class="hp-why-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <h4>Same-Day Service</h4>
-          <p>Most repairs done within 24 hours</p>
+          <strong>Same-Day Service</strong>
         </div>
-        <div class="why-item">
+        <div class="hp-why-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          <h4>Transparent Pricing</h4>
-          <p>Free diagnostic, no hidden fees</p>
+          <strong>Free Diagnostics</strong>
         </div>
-        <div class="why-item">
+        <div class="hp-why-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <h4>Certified Technicians</h4>
-          <p>CompTIA A+ & Microsoft certified</p>
+          <strong>Certified Techs</strong>
         </div>
-        <div class="why-item">
+        <div class="hp-why-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <h4>90-Day Warranty</h4>
-          <p>Issue returns? We fix it free</p>
+          <strong>90-Day Warranty</strong>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- How It Works -->
-  <section class="section">
+  <!-- Process — simple inline steps -->
+  <section class="hp-process">
     <div class="container">
-      <div class="section-header centered fade-in">
-        <span class="section-label">Simple Process</span>
-        <h2>How It Works</h2>
-        <p>Getting your device fixed is simple</p>
+      <h2 class="hp-heading fade-in">How It Works</h2>
+      <div class="hp-steps fade-in">
+        <div class="hp-step"><span>1</span> Book online or call</div>
+        <div class="hp-step"><span>2</span> Free diagnostic & quote</div>
+        <div class="hp-step"><span>3</span> Expert repair</div>
+        <div class="hp-step"><span>4</span> Pick up with warranty</div>
       </div>
-      <div class="process-steps">
-        <div class="process-step fade-in">
-          <div class="process-number">1</div>
-          <h4>Book Online</h4>
-          <p>Schedule an appointment online or give us a call</p>
-        </div>
-        <div class="process-step fade-in">
-          <div class="process-number">2</div>
-          <h4>Free Diagnostic</h4>
-          <p>We diagnose the issue and give you an honest quote</p>
-        </div>
-        <div class="process-step fade-in">
-          <div class="process-number">3</div>
-          <h4>Expert Repair</h4>
-          <p>Our certified technicians fix the problem fast</p>
-        </div>
-        <div class="process-step fade-in">
-          <div class="process-number">4</div>
-          <h4>Pick Up & Go</h4>
-          <p>Collect your device with a 90-day warranty</p>
-        </div>
-      </div>
+      <a href="booking.html" class="hp-link fade-in">Book an appointment &rarr;</a>
     </div>
   </section>
 
-  <!-- Google Reviews Carousel -->
-  <section class="section section-gray reviews-section">
+  <!-- Reviews -->
+  <section class="hp-reviews reviews-section">
     <div class="container">
-      <div class="section-header centered fade-in">
-        <span class="section-label">Reviews</span>
-        <h2>What Our Customers Say</h2>
-        <p>Real reviews from real customers</p>
-      </div>
+      <h2 class="hp-heading fade-in" style="color: var(--white);">Customer Reviews</h2>
       <div class="reviews-carousel fade-in">
         <div class="reviews-track" id="reviewsTrack">
-          <p class="reviews-loading" id="reviewsLoading" style="width:100%;text-align:center;color:var(--gray-400);padding:2rem 0;">Loading reviews...</p>
+          <p style="width:100%;text-align:center;color:var(--gray-400);padding:2rem 0;">Loading reviews...</p>
         </div>
       </div>
-      <div class="reviews-footer">
-        <a href="#" id="viewAllReviews" class="btn btn-outline-dark">View All Reviews</a>
+      <div class="text-center" style="margin-top: 1.5rem;">
+        <a href="#" id="viewAllReviews" class="btn btn-outline">View All Reviews</a>
       </div>
     </div>
   </section>
@@ -207,9 +162,7 @@
         <button class="reviews-modal-close" id="reviewsModalClose" aria-label="Close">&times;</button>
       </div>
       <div class="reviews-modal-body">
-        <div class="reviews-modal-grid" id="reviewsModalGrid">
-          <!-- Loaded by reviews.js -->
-        </div>
+        <div class="reviews-modal-grid" id="reviewsModalGrid"></div>
       </div>
       <div class="reviews-modal-footer">
         <a href="https://www.google.com/maps/place/?q=place_id:YOUR_PLACE_ID" target="_blank" rel="noopener">View on Google Maps &rarr;</a>
@@ -217,14 +170,14 @@
     </div>
   </div>
 
-  <!-- CTA Banner -->
-  <section class="cta-banner">
-    <div class="container">
-      <h2>Ready to Get Your Device Fixed?</h2>
-      <p>Book an appointment today and get a free diagnostic. Most repairs completed same day.</p>
-      <div class="cta-buttons">
-        <a href="booking.html" class="btn btn-white btn-lg">Book an Appointment</a>
-        <a href="contact.html" class="btn btn-outline btn-lg">Contact Us</a>
+  <!-- CTA — clean, no box -->
+  <section class="hp-cta">
+    <div class="container text-center">
+      <h2>Ready to get your device fixed?</h2>
+      <p>Free diagnostic included with every appointment.</p>
+      <div class="hp-cta-buttons">
+        <a href="booking.html" class="btn btn-accent btn-lg">Book an Appointment</a>
+        <a href="contact.html" class="btn btn-outline-dark btn-lg">Contact Us</a>
       </div>
     </div>
   </section>
@@ -237,7 +190,7 @@
           <a href="index.html" class="logo">
             <img src="images/cs-logo.png" alt="Computer Solutions" class="footer-logo">
           </a>
-          <p>Your source for computer sales, service, and repair in Keystone Heights, FL. Serving the community with reliable, affordable technology solutions since 2011.</p>
+          <p>Your source for computer sales, service, and repair in Keystone Heights, FL. Serving the community since 2011.</p>
         </div>
         <div>
           <h4>Quick Links</h4>
@@ -265,7 +218,6 @@
             <li>&#128222; (352) 478-6519</li>
             <li>&#9993; chaiyz@att.net</li>
             <li>&#128338; Mon-Fri: 10AM - 6PM</li>
-            <li>&#128338; Sat-Sun: Closed</li>
           </ul>
         </div>
       </div>
