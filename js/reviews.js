@@ -16,10 +16,9 @@
    and return the JSON response.
    ============================================ */
 
-// Reads from js/config.js — edit SITE_CONFIG there
-var REVIEWS_PROXY_URL = (typeof SITE_CONFIG !== 'undefined' && SITE_CONFIG.REVIEWS_PROXY_URL) || '';
-var GOOGLE_PLACE_ID = (typeof SITE_CONFIG !== 'undefined' && SITE_CONFIG.GOOGLE_PLACE_ID) || '';
-var GOOGLE_MAPS_URL = 'https://www.google.com/maps/place/?q=place_id:' + GOOGLE_PLACE_ID;
+// Uses Cloudflare Pages Function at /api/reviews
+// Set GOOGLE_PLACES_API_KEY and GOOGLE_PLACE_ID as env vars in Cloudflare Pages dashboard
+var REVIEWS_API_URL = '/api/reviews';
 
 // Fallback reviews (used when API unavailable)
 const FALLBACK_REVIEWS = [
@@ -75,20 +74,13 @@ const FALLBACK_REVIEWS = [
 
 // --- Fetch Reviews ---
 async function fetchGoogleReviews() {
-  if (!REVIEWS_PROXY_URL) {
-    console.log('Reviews: Using fallback reviews (no API configured)');
-    return FALLBACK_REVIEWS;
-  }
-
   try {
-    var res = await fetch(REVIEWS_PROXY_URL);
-    if (!res.ok) throw new Error('Reviews proxy returned ' + res.status);
+    var res = await fetch(REVIEWS_API_URL);
+    if (!res.ok) throw new Error('Reviews API returned ' + res.status);
     var data = await res.json();
 
-    var reviews = (data.result && data.result.reviews) || [];
-    // Filter 5-star only
-    var fiveStars = reviews.filter(function (r) { return r.rating >= 5; });
-    return fiveStars.length > 0 ? fiveStars : FALLBACK_REVIEWS;
+    var reviews = data.reviews || [];
+    return reviews.length > 0 ? reviews : FALLBACK_REVIEWS;
   } catch (err) {
     console.warn('Reviews: API failed, using fallback:', err.message);
     return FALLBACK_REVIEWS;
