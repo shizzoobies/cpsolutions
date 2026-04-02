@@ -304,13 +304,13 @@ p {
 }
 
 .nav-logo {
-  height: 50px;
+  height: 56px;
   width: auto;
   transition: var(--transition);
 }
 
 .header.scrolled .nav-logo {
-  height: 40px;
+  height: 46px;
 }
 
 .nav-links {
@@ -377,7 +377,7 @@ p {
   padding: 0;
   position: relative;
   overflow: hidden;
-  min-height: 100vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
 }
@@ -407,15 +407,14 @@ p {
   display: grid;
   grid-template-columns: 1fr;
   max-width: 720px;
-  padding: 8rem 0 5rem;
+  padding: 7rem 0 3.5rem;
 }
 
 .hero-text h1 {
   color: var(--white);
-  font-size: 3.75rem;
-  margin-bottom: 1.5rem;
+  font-size: 3rem;
+  margin-bottom: 1.25rem;
   line-height: 1.1;
-  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.3);
 }
 
 .hero-text h1 span {
@@ -427,10 +426,10 @@ p {
 
 .hero-text p {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 1.2rem;
-  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
   max-width: 540px;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 .hero-buttons {
@@ -442,8 +441,8 @@ p {
 
 .hero-stats {
   display: flex;
-  gap: 1.5rem;
-  margin-top: 3.5rem;
+  gap: 1rem;
+  margin-top: 2.5rem;
   flex-wrap: wrap;
 }
 
@@ -1258,10 +1257,10 @@ p {
 }
 
 .footer-logo {
-  height: 40px;
+  height: 44px;
   width: auto;
   filter: brightness(0) invert(1);
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
 .footer-about p {
@@ -1393,10 +1392,10 @@ p {
 
   .hero-content {
     text-align: center;
-    padding: 7rem 0 4rem;
+    padding: 6.5rem 0 3rem;
   }
 
-  .hero-text h1 { font-size: 2.75rem; }
+  .hero-text h1 { font-size: 2.25rem; }
   .hero-text p { margin-left: auto; margin-right: auto; }
   .hero-buttons { justify-content: center; }
   .hero-stats { justify-content: center; }
@@ -1456,8 +1455,8 @@ p {
 }
 
 @media (max-width: 480px) {
-  .hero-content { padding: 6.5rem 0 3rem; }
-  .hero-text h1 { font-size: 2.25rem; }
+  .hero-content { padding: 6rem 0 2.5rem; }
+  .hero-text h1 { font-size: 2rem; }
 
   .hero-stats {
     flex-direction: column;
@@ -1468,5 +1467,5 @@ p {
   .hero-stat { min-width: auto; }
   .about-stats { grid-template-columns: 1fr; }
   .container { padding: 0 1rem; }
-  .nav-logo { height: 40px; }
+  .nav-logo { height: 44px; }
 }
