@@ -550,6 +550,53 @@ p {
   color: var(--gray-500);
 }
 
+/* --- About Page Values --- */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.value-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+}
+
+.value-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(74, 144, 217, 0.3);
+}
+
+.value-item svg {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  color: var(--accent-light);
+}
+
+.value-item h4 {
+  color: var(--white);
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.value-item p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--gray-400);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .values-grid { grid-template-columns: 1fr; }
+}
+
 /* --- Home Page Sections (clean, no containers) --- */
 .hp-heading {
   font-size: 1.75rem;
