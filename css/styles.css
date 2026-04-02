@@ -1779,31 +1779,43 @@ p {
 /* ============================================
    ROBO CHAIYZ PROMPT + TROUBLESHOOTER
    ============================================ */
-.svc-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-  gap: 1.5rem;
-}
-
-.robo-prompt {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-  animation: roboSlideIn 0.8s ease both;
-  animation-delay: 1s;
+.robo-fixed {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  z-index: 9998;
+  animation: roboSlideIn 0.5s ease both;
+  animation-delay: 2s;
   opacity: 0;
 }
 
 @keyframes roboSlideIn {
-  from { opacity: 0; transform: translateX(-20px); }
+  from { opacity: 0; transform: translateX(60px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
+.robo-fixed-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  transition: var(--transition);
+  font-family: var(--font-main);
+}
+
+.robo-fixed-toggle:hover {
+  box-shadow: 0 6px 28px rgba(74, 144, 217, 0.25);
+  border-color: var(--accent);
+}
+
 .robo-avatar {
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -1813,37 +1825,19 @@ p {
 
 @keyframes roboPulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(74, 144, 217, 0.4); }
-  50% { box-shadow: 0 0 0 8px rgba(74, 144, 217, 0); }
+  50% { box-shadow: 0 0 0 6px rgba(74, 144, 217, 0); }
 }
 
-.robo-bubble {
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-lg);
-  border-top-left-radius: 4px;
-  padding: 0.85rem 1.1rem;
-}
-
-.robo-bubble strong {
-  font-size: 0.8rem;
+.robo-fixed-label {
+  font-size: 0.82rem;
+  font-weight: 600;
   color: var(--primary);
-  display: block;
-  margin-bottom: 0.2rem;
-}
-
-.robo-bubble p {
-  font-size: 0.88rem;
-  color: var(--gray-600);
-  margin-bottom: 0.6rem;
-  line-height: 1.4;
-}
-
-@media (max-width: 768px) {
-  .svc-bottom { flex-direction: column; align-items: center; }
+  white-space: nowrap;
 }
 
 @media (max-width: 480px) {
-  .robo-prompt { width: 100%; }
+  .robo-fixed { bottom: 5rem; right: 1rem; }
+  .robo-fixed-label { display: none; }
 }
 
 .ts-chat {

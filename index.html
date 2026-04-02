@@ -97,17 +97,7 @@
         </div>
         <div class="svc-detail-text" id="svcDetailInner"></div>
       </div>
-      <div class="svc-bottom fade-in">
-        <a href="services.html" class="hp-link">View all services &rarr;</a>
-        <div class="robo-prompt" id="roboPrompt">
-          <img src="images/bio.jpg" alt="Robo Chaiyz" class="robo-avatar">
-          <div class="robo-bubble">
-            <strong>Robo Chaiyz</strong>
-            <p>Need help troubleshooting? I can walk you through it!</p>
-            <button class="btn btn-accent" id="roboOpenBtn" style="font-size:0.8rem;padding:0.4rem 1rem;">Let's fix it</button>
-          </div>
-        </div>
-      </div>
+      <a href="services.html" class="hp-link">View all services &rarr;</a>
     </div>
   </section>
 
@@ -148,6 +138,14 @@
       <a href="#" data-open-contact class="hp-link fade-in">Book an appointment &rarr;</a>
     </div>
   </section>
+
+  <!-- Robo Chaiyz floating prompt -->
+  <div class="robo-fixed" id="roboPrompt">
+    <button class="robo-fixed-toggle" id="roboOpenBtn" aria-label="Open troubleshooter">
+      <img src="images/bio.jpg" alt="Robo Chaiyz" class="robo-avatar">
+      <span class="robo-fixed-label">Need tech help?</span>
+    </button>
+  </div>
 
   <!-- Troubleshooter Modal -->
   <div class="contact-modal" id="tsModal">
