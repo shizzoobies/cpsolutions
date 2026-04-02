@@ -7,23 +7,9 @@
    your key in client-side code.
    ============================================ */
 
-const ANTHROPIC_API_KEY = 'YOUR_ANTHROPIC_API_KEY';
-
-// Set this to your Cloudflare Worker URL if proxying (recommended)
-// e.g. 'https://chat-proxy.your-domain.workers.dev/v1/messages'
-const API_ENDPOINT = 'https://api.anthropic.com/v1/messages';
-
-const SYSTEM_PROMPT = `You are a helpful, friendly customer service assistant for Computer Solutions, a computer repair shop located at 255 S Lawrence Blvd, Suite 200, Keystone Heights, FL 32656. Owner: Chaiyz Brown.
-
-Key info:
-- Phone: (352) 478-6519
-- Hours: Monday-Friday 10AM-6PM, Closed Saturday & Sunday
-- Services: PC repair, laptop repair, LED/LCD/DLP TV repair, virus & malware removal (90-day warranty), data recovery, computer sales (new & refurbished), business IT support
-- Free diagnostic with every repair
-- A+ BBB rated since 2011
-- 14+ years experience
-
-Be concise, helpful, and friendly. If someone wants to book a repair, direct them to the booking page. For emergencies, give the phone number. Keep responses under 3 sentences when possible.`;
+// Set this to your Cloudflare Worker URL after deploying Chatworker
+// e.g. 'https://cs-chat-proxy.your-subdomain.workers.dev'
+const CHAT_WORKER_URL = '';
 
 let chatHistory = [];
 let useFallback = false;
@@ -70,34 +56,24 @@ function getFallbackResponse(message) {
 }
 
 // --- Anthropic API Call ---
-async function sendToAnthropic(userMessage) {
+async function sendToWorker(userMessage) {
   chatHistory.push({ role: 'user', content: userMessage });
 
   try {
-    var res = await fetch(API_ENDPOINT, {
+    var res = await fetch(CHAT_WORKER_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 300,
-        system: SYSTEM_PROMPT,
-        messages: chatHistory.slice(-10) // Keep last 10 messages for context
-      })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: chatHistory.slice(-10) })
     });
 
-    if (!res.ok) throw new Error('API error: ' + res.status);
+    if (!res.ok) throw new Error('Worker error: ' + res.status);
 
     var data = await res.json();
-    var reply = data.content[0].text;
+    var reply = data.reply;
     chatHistory.push({ role: 'assistant', content: reply });
     return reply;
   } catch (err) {
-    console.warn('Chatbot API failed, using fallback:', err.message);
+    console.warn('Chatbot worker failed, using fallback:', err.message);
     useFallback = true;
     var fallback = getFallbackResponse(userMessage);
     chatHistory.push({ role: 'assistant', content: fallback });
@@ -194,14 +170,14 @@ document.addEventListener('DOMContentLoaded', function () {
     showTyping();
 
     var reply;
-    if (useFallback || ANTHROPIC_API_KEY === 'YOUR_ANTHROPIC_API_KEY') {
-      // Use fallback if no key or previous failure
+    if (useFallback || !CHAT_WORKER_URL) {
+      // Use fallback if no worker URL or previous failure
       await new Promise(function (r) { setTimeout(r, 600); });
       reply = getFallbackResponse(text);
       chatHistory.push({ role: 'user', content: text });
       chatHistory.push({ role: 'assistant', content: reply });
     } else {
-      reply = await sendToAnthropic(text);
+      reply = await sendToWorker(text);
     }
 
     removeTyping();
