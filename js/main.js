@@ -35,6 +35,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // --- Services accordion click (mobile) ---
+  var accordion = document.getElementById('svcAccordion');
+  if (accordion) {
+    accordion.querySelectorAll('.svc-tile').forEach(function (tile) {
+      tile.addEventListener('click', function () {
+        accordion.querySelectorAll('.svc-tile').forEach(function (t) {
+          t.classList.remove('active');
+        });
+        tile.classList.add('active');
+      });
+    });
+  }
+
   // --- Header scroll effect ---
   const header = document.getElementById('header');
   if (header) {
