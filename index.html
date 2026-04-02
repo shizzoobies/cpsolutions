@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Computer Solutions - Professional computer repair, IT support, and technology services. Fast, reliable, and affordable.">
   <title>Computer Solutions | Professional Computer Repair & IT Services</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -35,21 +36,15 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-bg">
-      <video id="heroVideo" autoplay muted playsinline poster="images/hero-workbench.jpg">
-        <source src="images/hero-video.mp4" type="video/mp4">
-        <img src="images/hero-workbench.jpg" alt="Computer Solutions repair workshop">
-      </video>
-    </div>
+  <section class="hero hero-split">
     <div class="container">
-      <div class="hero-content">
+      <div class="hero-split-grid">
         <div class="hero-text">
           <h1>Expert Computer & <span>TV Repair</span> in Keystone Heights</h1>
           <p>Your complete source for PC, laptop, and LED/LCD/DLP television repair. We also sell new and refurbished computers. Reliable service with a personal touch.</p>
           <div class="hero-buttons">
             <a href="booking.html" class="btn btn-accent btn-lg">Book a Repair</a>
-            <a href="services.html" class="btn btn-outline btn-lg">Our Services</a>
+            <a href="services.html" class="btn btn-outline-dark btn-lg">Our Services</a>
           </div>
           <div class="hero-stats">
             <div class="hero-stat">
@@ -66,6 +61,11 @@
             </div>
           </div>
         </div>
+        <div class="hero-video-wrap">
+          <video id="heroVideo" autoplay muted playsinline poster="images/hero-workbench.jpg" preload="auto">
+            <source src="images/hero-video.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
     </div>
   </section>
@@ -80,32 +80,32 @@
       </div>
       <div class="features-grid">
         <div class="feature-card fade-in">
-          <div class="feature-icon"><img src="images/icons/pc-repair.jpg" alt="PC Repair"></div>
+          <div class="feature-icon"><img loading="lazy" src="images/icons/pc-repair.jpg" alt="PC Repair"></div>
           <h3>PC & Laptop Repair</h3>
           <p>Complete hardware and software repair for desktops and laptops. All major brands and models serviced.</p>
         </div>
         <div class="feature-card fade-in">
-          <div class="feature-icon"><img src="images/icons/tv-repair.jpg" alt="TV Repair"></div>
+          <div class="feature-icon"><img loading="lazy" src="images/icons/tv-repair.jpg" alt="TV Repair"></div>
           <h3>TV Repair</h3>
           <p>LED, LCD, and DLP television repair. We diagnose and fix display issues, power problems, and more.</p>
         </div>
         <div class="feature-card fade-in">
-          <div class="feature-icon"><img src="images/icons/virus.jpg" alt="Virus Removal"></div>
+          <div class="feature-icon"><img loading="lazy" src="images/icons/virus.jpg" alt="Virus Removal"></div>
           <h3>Virus & Malware Removal</h3>
           <p>Thorough virus and malware removal with a 90-day warranty. Get your system clean and protected.</p>
         </div>
         <div class="feature-card fade-in">
-          <div class="feature-icon"><img src="images/icons/data-recovery.jpg" alt="Data Recovery"></div>
+          <div class="feature-icon"><img loading="lazy" src="images/icons/data-recovery.jpg" alt="Data Recovery"></div>
           <h3>Data Recovery</h3>
           <p>Lost important files? We recover data from damaged, corrupted, or failing hard drives and SSDs.</p>
         </div>
         <div class="feature-card fade-in">
-          <div class="feature-icon"><img src="images/icons/sales.jpg" alt="Computer Sales"></div>
+          <div class="feature-icon"><img loading="lazy" src="images/icons/sales.jpg" alt="Computer Sales"></div>
           <h3>Computer Sales</h3>
           <p>New and refurbished laptops and desktops at competitive prices. Find the right computer for your needs.</p>
         </div>
         <div class="feature-card fade-in">
-          <div class="feature-icon"><img src="images/icons/business-it.jpg" alt="Business IT"></div>
+          <div class="feature-icon"><img loading="lazy" src="images/icons/business-it.jpg" alt="Business IT"></div>
           <h3>Business IT Support</h3>
           <p>Full software and hardware support for business computers. Consulting, setup, and ongoing maintenance.</p>
         </div>
@@ -123,28 +123,28 @@
       </div>
       <div class="why-grid">
         <div class="why-card fade-in">
-          <div class="why-icon"><img src="images/icons/sameday.jpg" alt="Same-Day"></div>
+          <div class="why-icon"><img loading="lazy" src="images/icons/sameday.jpg" alt="Same-Day"></div>
           <div>
             <h4>Same-Day Service</h4>
             <p>Most repairs completed within 24 hours. Emergency same-day service available for critical issues.</p>
           </div>
         </div>
         <div class="why-card fade-in">
-          <div class="why-icon"><img src="images/icons/pricing.jpg" alt="Transparent Pricing"></div>
+          <div class="why-icon"><img loading="lazy" src="images/icons/pricing.jpg" alt="Transparent Pricing"></div>
           <div>
             <h4>Transparent Pricing</h4>
             <p>No hidden fees or surprise charges. Get a free diagnostic and upfront quote before any work begins.</p>
           </div>
         </div>
         <div class="why-card fade-in">
-          <div class="why-icon"><img src="images/icons/certified.jpg" alt="Certified"></div>
+          <div class="why-icon"><img loading="lazy" src="images/icons/certified.jpg" alt="Certified"></div>
           <div>
             <h4>Certified Technicians</h4>
             <p>Our team holds industry certifications including CompTIA A+, Network+, and Microsoft certified.</p>
           </div>
         </div>
         <div class="why-card fade-in">
-          <div class="why-icon"><img src="images/icons/warranty.jpg" alt="90-Day Warranty"></div>
+          <div class="why-icon"><img loading="lazy" src="images/icons/warranty.jpg" alt="90-Day Warranty"></div>
           <div>
             <h4>90-Day Warranty</h4>
             <p>Every repair comes with a 90-day warranty. If the issue returns, we fix it free of charge.</p>
@@ -386,7 +386,7 @@
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/chatbot.js"></script>
-  <script src="js/reviews.js"></script>
+  <script defer src="js/chatbot.js"></script>
+  <script defer src="js/reviews.js"></script>
 </body>
 </html>
