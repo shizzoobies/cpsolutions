@@ -156,6 +156,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // --- Inject Web3Forms key from config.js ---
+  if (typeof SITE_CONFIG !== 'undefined' && SITE_CONFIG.WEB3FORMS_KEY) {
+    document.querySelectorAll('.web3forms-key').forEach(function (el) {
+      el.value = SITE_CONFIG.WEB3FORMS_KEY;
+    });
+  }
+
   // --- Web3Forms submission helper ---
   function submitWeb3Form(form, successEl) {
     form.addEventListener('submit', function (e) {

@@ -16,11 +16,10 @@
    and return the JSON response.
    ============================================ */
 
-const GOOGLE_PLACES_API_KEY = 'YOUR_GOOGLE_API_KEY';
-const GOOGLE_PLACE_ID = 'YOUR_PLACE_ID'; // Computer Solutions Keystone Heights Place ID
-const REVIEWS_PROXY_URL = ''; // Set to your Cloudflare Worker URL
-
-const GOOGLE_MAPS_URL = 'https://www.google.com/maps/place/?q=place_id:' + GOOGLE_PLACE_ID;
+// Reads from js/config.js — edit SITE_CONFIG there
+var REVIEWS_PROXY_URL = (typeof SITE_CONFIG !== 'undefined' && SITE_CONFIG.REVIEWS_PROXY_URL) || '';
+var GOOGLE_PLACE_ID = (typeof SITE_CONFIG !== 'undefined' && SITE_CONFIG.GOOGLE_PLACE_ID) || '';
+var GOOGLE_MAPS_URL = 'https://www.google.com/maps/place/?q=place_id:' + GOOGLE_PLACE_ID;
 
 // Fallback reviews (used when API unavailable)
 const FALLBACK_REVIEWS = [
@@ -76,7 +75,7 @@ const FALLBACK_REVIEWS = [
 
 // --- Fetch Reviews ---
 async function fetchGoogleReviews() {
-  if (!REVIEWS_PROXY_URL || GOOGLE_PLACES_API_KEY === 'YOUR_GOOGLE_API_KEY') {
+  if (!REVIEWS_PROXY_URL) {
     console.log('Reviews: Using fallback reviews (no API configured)');
     return FALLBACK_REVIEWS;
   }

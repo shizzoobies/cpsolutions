@@ -7,9 +7,8 @@
    your key in client-side code.
    ============================================ */
 
-// Set this to your Cloudflare Worker URL after deploying Chatworker
-// e.g. 'https://cs-chat-proxy.your-subdomain.workers.dev'
-const CHAT_WORKER_URL = 'https://cs-chat-proxy.tgqhg6kf4g.workers.dev';
+// Reads from js/config.js — edit SITE_CONFIG there
+var CHAT_WORKER_URL = (typeof SITE_CONFIG !== 'undefined' && SITE_CONFIG.CHAT_WORKER_URL) || '';
 
 let chatHistory = [];
 let useFallback = false;
