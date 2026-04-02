@@ -323,6 +323,142 @@ document.addEventListener('DOMContentLoaded', function () {
     submitWeb3Form(homeCallbackForm, homeCallbackSuccess);
   }
 
+  // --- Troubleshooter ---
+  var tsForm = document.getElementById('tsForm');
+  var tsInput = document.getElementById('tsInput');
+  var tsMessages = document.getElementById('tsMessages');
+  var tsQuick = document.getElementById('tsQuick');
+  var tsHistory = [];
+
+  function tsAddMsg(text, sender) {
+    var div = document.createElement('div');
+    div.className = 'ts-msg ' + sender;
+    var html = text.replace(/\n/g, '<br>');
+    // Add "Schedule a visit" link to bot messages that mention scheduling/booking/visit/come in
+    if (sender === 'bot' && /schedul|book|visit|come in|bring it|hands-on|in.person|free diagnostic/i.test(text)) {
+      html += '<br><a class="ts-book-link" data-open-contact href="#">Schedule a visit &rarr;</a>';
+    }
+    div.innerHTML = html;
+    tsMessages.appendChild(div);
+    tsMessages.scrollTop = tsMessages.scrollHeight;
+  }
+
+  function tsShowTyping() {
+    var div = document.createElement('div');
+    div.className = 'ts-typing';
+    div.id = 'tsTyping';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    tsMessages.appendChild(div);
+    tsMessages.scrollTop = tsMessages.scrollHeight;
+  }
+
+  function tsRemoveTyping() {
+    var el = document.getElementById('tsTyping');
+    if (el) el.remove();
+  }
+
+  async function tsSend(text) {
+    if (!text.trim()) return;
+    tsAddMsg(text, 'user');
+    if (tsQuick) tsQuick.style.display = 'none';
+    tsInput.value = '';
+    tsInput.disabled = true;
+
+    tsHistory.push({ role: 'user', content: text });
+    tsShowTyping();
+
+    try {
+      var res = await fetch('/api/troubleshoot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: tsHistory.slice(-12) })
+      });
+
+      if (!res.ok) throw new Error(res.status);
+      var data = await res.json();
+      var reply = data.reply;
+      tsHistory.push({ role: 'assistant', content: reply });
+      tsRemoveTyping();
+      tsAddMsg(reply, 'bot');
+      tsCheckShowSend();
+    } catch (err) {
+      tsRemoveTyping();
+      tsAddMsg('I\'m having trouble connecting right now. Please call us at (352) 478-6519 for immediate help!', 'bot');
+    }
+
+    tsInput.disabled = false;
+    tsInput.focus();
+  }
+
+  if (tsForm) {
+    tsForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      tsSend(tsInput.value);
+    });
+  }
+
+  if (tsQuick) {
+    tsQuick.addEventListener('click', function (e) {
+      var btn = e.target.closest('button');
+      if (btn) tsSend(btn.getAttribute('data-msg'));
+    });
+  }
+
+  // --- Troubleshooter: Send Chat ---
+  var tsSendChat = document.getElementById('tsSendChat');
+  var tsSendChatBtn = document.getElementById('tsSendChatBtn');
+  var tsChatModal = document.getElementById('tsChatModal');
+  var tsChatModalClose = document.getElementById('tsChatModalClose');
+  var tsChatForm = document.getElementById('tsChatForm');
+  var tsChatSuccess = document.getElementById('tsChatSuccess');
+  var tsChatTranscript = document.getElementById('tsChatTranscript');
+  var tsExchangeCount = 0;
+
+  // Show "send chat" button after 2 bot replies
+  function tsCheckShowSend() {
+    tsExchangeCount++;
+    if (tsExchangeCount >= 2 && tsSendChat) {
+      tsSendChat.style.display = 'block';
+    }
+  }
+
+  // Patch tsSend to count exchanges
+  var _origTsSend = typeof tsSend === 'function' ? tsSend : null;
+  if (_origTsSend) {
+    // Already defined above — hook into the reply flow
+  }
+
+  if (tsSendChatBtn && tsChatModal) {
+    tsSendChatBtn.addEventListener('click', function () {
+      // Build transcript from chat messages
+      var msgs = tsMessages.querySelectorAll('.ts-msg');
+      var transcript = [];
+      msgs.forEach(function (m) {
+        var who = m.classList.contains('user') ? 'Customer' : 'Tech Assistant';
+        transcript.push(who + ': ' + m.textContent.replace('Schedule a visit →', '').trim());
+      });
+      tsChatTranscript.value = transcript.join('\n\n');
+      tsChatModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    tsChatModalClose.addEventListener('click', function () {
+      tsChatModal.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+
+    tsChatModal.addEventListener('click', function (e) {
+      if (e.target === tsChatModal) {
+        tsChatModal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+
+    if (tsChatForm && tsChatSuccess) {
+      submitWeb3Form(tsChatForm, tsChatSuccess);
+    }
+  }
+
   // --- Smooth scroll for anchor links ---
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {

@@ -139,6 +139,47 @@
     </div>
   </section>
 
+  <!-- Troubleshooter -->
+  <section class="hp-troubleshoot">
+    <div class="container">
+      <div class="ts-layout fade-in">
+        <div class="ts-info">
+          <h2>Having Tech Issues?</h2>
+          <p>Describe your problem and our AI tech assistant will walk you through troubleshooting steps. If we can't fix it remotely, we'll help you schedule a visit.</p>
+          <div class="ts-tags">
+            <span>Slow Computer</span>
+            <span>No Power</span>
+            <span>Blue Screen</span>
+            <span>Virus</span>
+            <span>Wi-Fi Issues</span>
+            <span>TV Problems</span>
+          </div>
+        </div>
+        <div class="ts-chat" id="tsChat">
+          <div class="ts-messages" id="tsMessages">
+            <div class="ts-msg bot">Hi! I'm the Computer Solutions tech assistant. What's going on with your device?</div>
+          </div>
+          <div class="ts-quick" id="tsQuick">
+            <button data-msg="My computer is running really slow">Slow PC</button>
+            <button data-msg="My computer won't turn on">Won't Power On</button>
+            <button data-msg="I think I have a virus">Virus/Malware</button>
+            <button data-msg="My Wi-Fi keeps disconnecting">Wi-Fi Issues</button>
+            <button data-msg="My TV screen is flickering">TV Problem</button>
+          </div>
+          <div class="ts-send-chat" id="tsSendChat" style="display:none;">
+            <button class="btn btn-accent" id="tsSendChatBtn" style="width:100%;font-size:0.85rem;padding:0.5rem;">Send this chat to our team for diagnosis</button>
+          </div>
+          <form class="ts-input" id="tsForm">
+            <input type="text" id="tsInput" placeholder="Describe your issue..." autocomplete="off">
+            <button type="submit">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Reviews -->
   <section class="hp-reviews reviews-section">
     <div class="container">
@@ -229,6 +270,43 @@
       </div>
     </div>
   </footer>
+
+  <!-- Send Chat Modal -->
+  <div class="contact-modal" id="tsChatModal">
+    <div class="contact-modal-inner" style="max-width:440px;">
+      <div class="contact-modal-header">
+        <h3>Send Chat to Our Team</h3>
+        <button class="contact-modal-close" id="tsChatModalClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="contact-modal-body">
+        <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:1rem;">We'll review your troubleshooting chat and get back to you with next steps.</p>
+        <form id="tsChatForm">
+          <input type="hidden" name="access_key" value="" class="web3forms-key">
+          <input type="hidden" name="subject" value="Troubleshooting Chat from Computer Solutions Website">
+          <input type="hidden" name="from_name" value="Computer Solutions Troubleshooter">
+          <input type="hidden" name="chat_transcript" id="tsChatTranscript" value="">
+          <div class="form-group">
+            <label for="tsName">Name *</label>
+            <input type="text" id="tsName" name="name" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="tsPhone">Phone *</label>
+            <input type="tel" id="tsPhone" name="phone" required placeholder="(352) 000-0000">
+          </div>
+          <div class="form-group">
+            <label for="tsEmail">Email</label>
+            <input type="email" id="tsEmail" name="email" placeholder="you@email.com">
+          </div>
+          <button type="submit" class="btn btn-accent btn-lg" style="width:100%;">Send to Our Team</button>
+        </form>
+        <div class="form-success-inline" id="tsChatSuccess">
+          <div class="success-icon">&#10003;</div>
+          <h4>Chat Sent!</h4>
+          <p>Our team will review the conversation and reach out shortly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Contact Modal -->
   <div class="contact-modal" id="contactModal">
