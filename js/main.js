@@ -35,15 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- Hero video: play once, hold last frame ---
-  var heroVideo = document.getElementById('heroVideo');
-  if (heroVideo) {
-    heroVideo.addEventListener('ended', function () {
-      // Pause on last frame — do not loop
-      heroVideo.pause();
-    });
-  }
-
   // --- Header scroll effect ---
   const header = document.getElementById('header');
   if (header) {

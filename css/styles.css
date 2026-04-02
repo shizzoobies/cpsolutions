@@ -391,17 +391,15 @@ p {
   align-items: center;
 }
 
-.hero-video-wrap {
+.hero-image-wrap {
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
-  aspect-ratio: 16/9;
 }
 
-.hero-video-wrap video {
+.hero-image-wrap img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 
@@ -1396,7 +1394,7 @@ p {
   .hero-buttons { justify-content: center; }
   .hero-stats { justify-content: center; }
 
-  .hero-video-wrap {
+  .hero-image-wrap {
     max-width: 480px;
     margin: 0 auto;
   }
