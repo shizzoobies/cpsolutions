@@ -47,6 +47,19 @@ document.addEventListener('DOMContentLoaded', function () {
       var trigger = e.target.closest('[data-open-contact]');
       if (!trigger) return;
       e.preventDefault();
+
+      // If coming from troubleshooter, attach chat transcript
+      var mcMessage = document.getElementById('mcMessage');
+      if (trigger.hasAttribute('data-include-chat') && tsMessages && mcMessage) {
+        var msgs = tsMessages.querySelectorAll('.ts-msg');
+        var lines = [];
+        msgs.forEach(function (m) {
+          var who = m.classList.contains('user') ? 'Customer' : 'Robo Chaiyz';
+          lines.push(who + ': ' + m.textContent.replace('Schedule a visit →', '').trim());
+        });
+        mcMessage.value = '--- Troubleshooting Chat ---\n' + lines.join('\n');
+      }
+
       contactModal.classList.add('open');
       document.body.style.overflow = 'hidden';
     });
@@ -363,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (sender === 'bot') {
       html = '<img src="images/bio.jpg" alt="Robo Chaiyz" class="ts-avatar">' + html;
       if (/schedul|book|visit|come in|bring it|hands-on|in.person|free diagnostic/i.test(text)) {
-        html += '<br><a class="ts-book-link" data-open-contact href="#">Schedule a visit &rarr;</a>';
+        html += '<br><a class="ts-book-link" data-open-contact data-include-chat href="#">Schedule a visit &rarr;</a>';
       }
     }
     div.innerHTML = html;
