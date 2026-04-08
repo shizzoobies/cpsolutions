@@ -175,75 +175,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- Contact Form Submission ---
-  const contactForm = document.getElementById('contactForm');
-  const contactSuccess = document.getElementById('contactSuccess');
-
+  // --- Contact Form (Web3Forms) ---
+  var contactForm = document.getElementById('contactForm');
+  var contactSuccess = document.getElementById('contactSuccess');
   if (contactForm && contactSuccess) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      // Basic validation
-      var valid = true;
-      contactForm.querySelectorAll('[required]').forEach(function (field) {
-        if (!field.value.trim()) {
-          field.style.borderColor = '#ef4444';
-          valid = false;
-        } else {
-          field.style.borderColor = '';
-        }
-      });
-
-      if (!valid) return;
-
-      // Simulate submission
-      var submitBtn = contactForm.querySelector('button[type="submit"]');
-      submitBtn.textContent = 'Sending...';
-      submitBtn.disabled = true;
-
-      setTimeout(function () {
-        contactForm.style.display = 'none';
-        contactSuccess.classList.add('show');
-      }, 1200);
-    });
+    submitWeb3Form(contactForm, contactSuccess);
   }
 
-  // --- Booking Form Submission ---
-  const bookingForm = document.getElementById('bookingForm');
-  const bookingSuccess = document.getElementById('bookingSuccess');
-
+  // --- Booking Form (Web3Forms) ---
+  var bookingForm = document.getElementById('bookingForm');
+  var bookingSuccess = document.getElementById('bookingSuccess');
   if (bookingForm && bookingSuccess) {
-    // Set minimum date to today
     var dateInput = document.getElementById('bookDate');
     if (dateInput) {
-      var today = new Date().toISOString().split('T')[0];
-      dateInput.setAttribute('min', today);
+      dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
     }
-
-    bookingForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var valid = true;
-      bookingForm.querySelectorAll('[required]').forEach(function (field) {
-        if (!field.value.trim()) {
-          field.style.borderColor = '#ef4444';
-          valid = false;
-        } else {
-          field.style.borderColor = '';
-        }
-      });
-
-      if (!valid) return;
-
-      var submitBtn = bookingForm.querySelector('button[type="submit"]');
-      submitBtn.textContent = 'Booking...';
-      submitBtn.disabled = true;
-
-      setTimeout(function () {
-        bookingForm.style.display = 'none';
-        bookingSuccess.classList.add('show');
-      }, 1200);
-    });
+    submitWeb3Form(bookingForm, bookingSuccess);
   }
 
   // --- Input validation feedback ---
