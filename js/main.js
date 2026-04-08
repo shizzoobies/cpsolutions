@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // --- Services showcase ---
   var svcData = [
     { title: 'PC & Laptop Repair', desc: 'Complete hardware and software repair for desktops and laptops. Screen replacements, motherboard repair, component upgrades, and more. All major brands and models serviced.' },
-    { title: 'Virus & Malware Removal', desc: 'Thorough virus and malware removal with a 90-day warranty. We clean your system, set up protection, and if it comes back within 90 days we fix it free.' },
+    { title: 'Virus & Malware Removal', desc: 'Thorough virus and malware removal with a 1-year warranty. We clean your system, set up protection, and if it comes back within 1 year we fix it free.' },
     { title: 'Data Recovery', desc: 'Lost important files? We recover data from damaged, corrupted, or failing hard drives and SSDs. Don\'t panic — bring it in and we\'ll see what we can save.' },
     { title: 'Computer Sales', desc: 'New and refurbished laptops and desktops at competitive prices. We help you find the right computer for your needs and budget, with setup included.' },
     { title: 'Custom Computer Builds', desc: 'We build custom PCs tailored to your needs and budget. Pick your parts on PCPartPicker, send us the list, and we handle the rest. <a href="services.html#buildYourPC">Start your build &rarr;</a>' },
