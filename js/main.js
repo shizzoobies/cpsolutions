@@ -425,7 +425,11 @@ document.addEventListener('DOMContentLoaded', function () {
       tsCheckShowSend();
     } catch (err) {
       tsRemoveTyping();
-      tsAddMsg('I\'m having trouble connecting right now. Please call us at (352) 478-6519 for immediate help!', 'bot');
+      tsAddMsg('I\'m not able to connect to the AI right now, but don\'t worry — we can still help! Call us at (352) 478-6519 (Mon-Fri 10AM-6PM) or click below to send us a message describing your issue.', 'bot');
+      if (tsSendChat) {
+        tsSendChat.style.display = 'block';
+        tsSendChat.querySelector('p').textContent = 'Send your issue to our team and we\'ll get back to you.';
+      }
     }
 
     tsInput.disabled = false;
@@ -582,7 +586,11 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (err) {
       var el2 = document.getElementById('baTyping');
       if (el2) el2.remove();
-      baAddMsg('Having trouble connecting. Call us at (352) 478-6519 for help!', 'bot');
+      baAddMsg('I\'m not able to connect right now, but our team can still help you plan your build! Call us at (352) 478-6519 (Mon-Fri 10AM-6PM) or send us what you\'re looking for below.', 'bot');
+      if (baSendChat) {
+        baSendChat.style.display = 'block';
+        baSendChat.querySelector('p').textContent = 'Tell our team what you\'re looking for and we\'ll put together a recommendation.';
+      }
     }
 
     baInput.disabled = false;
