@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function () {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
         // Show fallback
-        alert('Message could not be sent. Please email computersolutionskeystone@gmail.com or try again.');
+        alert('Message could not be sent. Please try again or use the contact form.');
       });
     });
   }

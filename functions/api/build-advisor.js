@@ -33,7 +33,8 @@ RULES:
 - Stay within their budget — don't upsell
 - If budget is very low (under $400), be honest and suggest a refurbished option from our store instead
 - Always mention we handle assembly, cable management, stress testing, and OS install
-- Phone: (352) 478-6519, Mon-Fri 10AM-6PM`;
+- Hours: Mon-Fri 10AM-6PM
+- Do NOT give out phone numbers or email addresses. Direct customers to use the Book Now button or contact form on the website.`;
 
 export async function onRequestPost(context) {
   const { env } = context;
