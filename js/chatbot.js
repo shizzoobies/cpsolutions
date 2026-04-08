@@ -55,7 +55,7 @@ function getFallbackResponse(message) {
       return FAQ_RESPONSES[keyword];
     }
   }
-  return "I'd be happy to help! For specific questions, you can call us at (352) 478-6519 (Mon-Fri 10AM-6PM) or visit our services page. You can also book a repair online!";
+  return "I'd be happy to help with that! Click the 'Book Now' button to send us a message and our team will get back to you.";
 }
 
 // --- Anthropic API Call ---
